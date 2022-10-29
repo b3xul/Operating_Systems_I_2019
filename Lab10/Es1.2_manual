@@ -1,0 +1,60 @@
+#!/bin/bash
+#https://www.thegeekstuff.com/2013/06/cut-command-examples
+#https://www.computerhope.com/unix/ucut.htm
+#https://www.librebyte.net/en/gnulinux/25-practical-examples-of-the-find-command/
+#https://unix.stackexchange.com/questions/9784/how-can-i-read-line-by-line-from-a-variable-in-bash
+#http://tldp.org/LDP/abs/html/process-sub.html
+read uid gid other_groups <<< $(id)
+uid=${uid//*(/}
+uid=${uid//)/}
+echo "uid=$uid"
+uid=$(whoami)
+echo "uid=$uid"
+
+gid=${gid//[!0-9]/} 
+echo $gid
+
+results=$(cat /etc/passwd | grep -E "*:*:*:"$gid":*" | cut -d ':' -f 1 )
+
+#results=$($results | cut -d '\n') non accetta il newline
+ 
+echo "results==$results"
+
+#-r non permettere a \ di fare da escape
+i=0
+while IFS= read -r line
+do
+	results[i]="$line"
+	echo "results[$i]="${results[$i]}""
+	if [ $line != $uid ]
+	then
+		echo "Cerco file dell'user $line"
+		find 2>/dev/null /home -name "*.c" -user "$line"    
+   	fi
+   	let i=i+1
+done < <(printf '%s\n' "$results")
+
+
+#while IFS='/n' read line <<< $results
+#do	
+#	echo line==$line
+#	IFS=':' read user trash <<< $line
+#	echo user==$user
+#	echo trash==$trash
+#done	
+
+
+#set +x
+#IFS='/n'
+#for user in $(cat /etc/passwd | grep -E "*:*:*:"$gid":*")
+#do
+#    set -x
+#    echo $user
+#    user=${user//:*/}
+#    echo $user
+#    set +x    
+#    if [ $user != $uid ]
+#    then
+#        find -name "*.c" -user $user    
+#    fi
+#done

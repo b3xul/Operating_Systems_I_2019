@@ -1,0 +1,10 @@
+https://unix.stackexchange.com/questions/216778/shell-script-sending-input-to-background-process
+Per mandare segnali a una subshell sfrutto fg (mette in foreground un processo che era in background) e bg (mette in background in processo che era in background)
+1)	./Es1
+2)	5 3 (input deve avvenire per forza dalla shell principale
+3)	ctrl+z (SIGTSTP)->restituisce il numero del job associato al processo tra tutti i job stoppati (1,2,3...)
+4)	bg 1 (mette job 1 in bg)
+ora ho una subshell con processo in pause() che attende segnale
+5)	ps (verificare PID del processo in background)
+6)	kill -s SIGUSR1 (o altri) PID
+

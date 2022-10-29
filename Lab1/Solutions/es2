@@ -1,0 +1,7 @@
+vi nomefile
+usare vi e salvarlo
+Path assoluto: cp nomefile.txt /home/francesco/Labs/Lab1/my_exercise_1/test/alfa
+Path relativo: cp nomefile.txt ./source/../test/beta (./path di partenza, /../ tornare indietro senza usare cd)
+More,less,cat?
+vi nomefile
+modificare file

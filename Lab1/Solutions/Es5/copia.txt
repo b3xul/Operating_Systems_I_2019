@@ -1,0 +1,18 @@
+File binario non copiabile con primitive I/O.
+Compilazione diretta:
+1)gcc es5.c
+il programma ottenuto si chiamerà a.out
+
+2)gcc es5.c -o es5
+-o: mette l'output di gcc es5.c nel file "es5".
+
+Compilazione tramite makefile:
+
+file compilato deve avere lo stesso nome del file.c?
+
+1)es5: es5.c
+	gcc -o es5 es5.c -I
+make es5
+
+-o mette programma output in "es5"
+-I cerca librerie include nella directory corrente

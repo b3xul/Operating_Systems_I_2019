@@ -1,0 +1,22 @@
+Sistemi Operativi – Lab 6 27.11.18 - A.A. 2018/2019 - Prof. L. Sterpone
+Goal: gestione dei segnali, creazione dell’handler, sincronizzazione dei processi tramite segnali.
+Esercizio 1 (signal e comando kill):
+Scrivere un programma C che riceva in input da tastiera due numeri interi, a e b, e ne stampi a video:
+- la somma “a+b” solo quando riceve il segnale SIGUSR2;
+- la differenza “a-b” quando riceve il segnale SIGUSR1.
+Il programma termina quando riceve SIGINT. Utilizzare il comando kill per inviare i segnali al processo.
+Esercizio 2 (signal handler):
+Scrivere un programma C che riceva in input da linea di comando il PID del programma dell’esercizio
+precedente ed un comando (vedi tabella sotto) e invii il relativo segnale al processo <PID>:
+Comando: segnale
+“somma”: SIGUSR2
+“differenza”: SIGUSR1
+“fine”: SIGINT
+Esercizio 3 (signal e pause):
+Scrivere un programma C che: crea due figli, ne stampa i relativi PID ed attende che entrambi terminino
+intercettando SIGCHLD.
+Il primo figlio legge i primi 50 byte dal file “son1.txt”, li stampa a video e termina.
+Il secondo figlio legge i primi 50 byte dal file “son2.txt”, e li stampa a video, attende 5 secondi e termina.
+Nota 1: Creare i due file son1.txt e son2.txt prima di eseguire il programma.
+Nota 2: Osservare l’ordine di visualizzazione delle informazioni. Utilizzando I segnali, “forzare” la
+visualizzazione dell’intero contenuto di son2.txt prima della visualizzazione di son1.txt.

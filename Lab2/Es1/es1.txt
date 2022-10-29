@@ -1,0 +1,16 @@
+DEBUG da terminale:
+https://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/
+1. compilare usando direttiva -g per gcc
+2. avviare gdb (gdb es1)
+3. settare breakpoints
+   (break 2)->breakpoint sulla linea 2
+   (break es1.c:my_ls)->breakpoint all'inizio della funzione my_ls nel source file es1.c
+3. r /home/francesco/Labs
+4. p var->print var value
+5. c->continue
+6. n->next (salta funzioni)
+7. s->step (entra nelle funzioni)
+8. l->list: stampa il codice sorgente in debug mode 
+   (l numero)->stampa riga numero.. 
+   (l funzione)->stampa funzione corrispondente
+9. watch var->crea watchpoint per var, ma per fare watch di una stringa??

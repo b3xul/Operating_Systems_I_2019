@@ -1,0 +1,4 @@
+0. Menu Breakpoint (right): Add event breakpoint (event type=fork called)
+1. Start Debug
+2. Follow inside parent (steps)
+3. Menu Debug (left): Select other process to follow inside child (steps)

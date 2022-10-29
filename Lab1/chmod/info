@@ -1,0 +1,49 @@
+Usage: chmod [OPTION]... MODE[,MODE]... FILE...
+  or:  chmod [OPTION]... OCTAL-MODE FILE...
+  or:  chmod [OPTION]... --reference=RFILE FILE...
+Change the mode of each FILE to MODE.
+With --reference, change the mode of each FILE to that of RFILE.
+
+  -c, --changes          like verbose but report only when a change is made
+  -f, --silent, --quiet  suppress most error messages
+  -v, --verbose          output a diagnostic for every file processed
+      --no-preserve-root  do not treat '/' specially (the default)
+      --preserve-root    fail to operate recursively on '/'
+      --reference=RFILE  use RFILE's mode instead of MODE values
+  -R, --recursive        change files and directories recursively
+      --help     display this help and exit
+      --version  output version information and exit
+
+Each MODE is of the form '[ugoa]*([-+=]([rwxXst]*|[ugo]))+|[-+=][0-7]+'.
+Comandi Principali:
+Chmod [per modificare i permessi di un file]
+I permessi sono:
+lettura (read)
+r
+scrittura (write)
+w
+esecuzione (executable)
+x
+
+Funziona inserendo + o – a seconda se si vuole aggiungere o togliere quei privilegi.
+Si può anche usare con : u=rw,g+w,o-x nomefile
+
+chmod rwxrw-r-- myfile NO!
+chmod +rwxrw-r-- myfile SI'!
+Permesso per proprietario: lettura , scrittura, esecuzione
+Permesso per gruppo: lettura, scrittura
+Permesso per gli altri: lettura
+
+modo numerico:
+lettura (read)
+4
+scrittura (write)
+2
+esecuzione (executable)
+1
+nessun permesso
+0
+chmod 764 myfile
+proprietario: 7=4+2+1, lettura , scrittura, esecuzione
+gruppo: 6=4+2, lettura, scrittura
+altri: 4, lettura

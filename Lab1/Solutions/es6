@@ -1,0 +1,2 @@
+ln -s my_exercise_1 link (softlink)
+N.B. link punta una directory. Se sposto la directory da terminale, da FS logico si rompe il link. Una volta rotto se sposto nuovamente il file nella posizione originaria da terminale, il FS logico continuerà a vedere il link come rotto anche se ora dovrebbe funzionare. Il comportamento torna quello atteso semplicemente "refreshando" la visuale del FS logico, riaprendolo o entrando/uscendo da una cartella (ricarica il contenuto attuale e ripristina il link)

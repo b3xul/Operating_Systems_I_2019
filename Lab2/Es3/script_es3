@@ -1,0 +1,14 @@
+#! /bin/bash
+cd \
+&& mkdir first -v ; mkdir second -v\
+&& cp /etc/profile first -v && cp /etc/profile second/copia-profile -v\
+&& mv first/profile second -v && mv second/copia-profile first -v\
+&& rm second/profile first/copia-profile -v\
+&& rmdir first second -v\
+&& stat es3.txt\
+&& touch -at 201810310000 es3.txt\
+&& stat es3.txt\
+&& ls\
+&& touch filevuoto\
+&& ls\
+&& rm filevuoto

@@ -1,0 +1,67 @@
+Copiare link?
+
+:%s/foo/bar/g
+refactor nome variabile da foo a bar
+
+#include <sys/stat.h>
+
+int mkdir(const char *path, mode_t mode);
+modes disponibili:
+
+S_IRWXU
+read, write, execute/search by owner
+S_IRUSR
+read permission, owner
+S_IWUSR
+write permission, owner
+S_IXUSR
+execute/search permission, owner
+S_IRWXG
+read, write, execute/search by group
+S_IRGRP
+read permission, group
+S_IWGRP
+write permission, group
+S_IXGRP
+execute/search permission, group
+S_IRWXO
+read, write, execute/search by others
+S_IROTH
+read permission, others
+S_IWOTH
+write permission, others
+S_IXOTH
+execute/search permission, others
+S_ISUID
+set-user-ID on execution
+S_ISGID
+set-group-ID on execution
+S_ISVTX
+on directories, restricted deletion flag
+
+open flags:
+
+O_RDONLY
+Open for reading only.
+O_WRONLY
+Open for writing only.
+O_RDWR
+Open for reading and writing. The result is undefined if this flag is applied to a FIFO.
+Any combination of the following may be used:
+
+O_APPEND
+If set, the file offset will be set to the end of the file prior to each write.
+O_CREAT
+If the file exists, this flag has no effect except as noted under O_EXCL below. Otherwise, the file is created; the user ID of the file is set to the effective user ID of the process; the group ID of the file is set to  the group ID of the file's parent directory or to the effective group ID of the process;  and the access permission bits (see <sys/stat.h>) of the file mode are set to the value of the third argument taken as type mode_t modified as follows: a bitwise-AND is performed on the file-mode bits and the corresponding bits in the complement of the process' file mode creation mask. Thus, all bits in the file mode whose corresponding bit in the file mode creation mask is set are cleared. When bits other than the file permission bits are set, the effect is unspecified. The third argument does not affect whether the file is open for reading, writing or for both.
+O_DSYNC
+Write I/O operations on the file descriptor complete as defined by synchronised I/O data integrity completion
+O_EXCL
+If O_CREAT and O_EXCL are set, open() will fail if the file exists. The check for the existence of the file and the creation of the file if it does not exist will be atomic with respect to other processes executing open() naming the same filename in the same directory with O_EXCL and O_CREAT set. If O_CREAT is not set, the effect is undefined.
+O_NOCTTY
+If set and path identifies a terminal device, open() will not cause the terminal device to become the controlling terminal for the process.
+O_NONBLOCK
+When opening a FIFO with O_RDONLY or O_WRONLY set: If O_NONBLOCK is set:
+An open() for reading only will return without delay. An open() for writing only will return an error if no process currently has the file open for reading.
+If O_NONBLOCK is clear:
+
+An open() for reading only will block the calling thread until a thread opens the file for writing. An open() for writing only will block the calling thread until a t

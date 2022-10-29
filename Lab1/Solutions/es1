@@ -1,0 +1,6 @@
+mkdir my_exercise_1
+mkdir my_exercise_1/source
+cd my_exercise_1/source
+mkdir include
+mkdir lib
+....

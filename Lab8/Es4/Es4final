@@ -1,0 +1,62 @@
+#!/bin/bash
+#https://stackoverflow.com/questions/255898/how-to-iterate-over-arguments-in-a-bash-script
+#https://stackoverflow.com/questions/23356779/how-can-i-store-find-command-result-as-arrays-in-bash
+#https://stackoverflow.com/questions/1951506/add-a-new-element-to-an-array-without-specifying-the-index-in-bash
+if [ $# -lt 2 ]
+then
+        echo Inserire come primo argomento il path relativo della cartella da modificare tra virgolette e poi tutti i caratteri che si vogliono convertire in maiuscolo tutti attaccati
+fi
+#echo "A mano:"
+#echo $1
+#echo $2
+#echo $3
+
+echo 'for con $@'
+for var in "$@"
+do
+    echo "$var"
+done
+
+#echo 'for con $*'	#NON. FARE. MAI.
+#for var in "$*"
+#do
+#    echo "$var"
+#done
+
+setchar1="$2"
+echo "setchar1=$setchar1"
+setchar2="$(echo "$setchar1" | tr '[:lower:]' '[:upper:]')"
+echo "setchar2=$setchar2"
+
+#results=()
+while IFS=  read -r -d $'\0'
+do
+    results+=("$REPLY")
+done < <(find "$1" -type f -print0)
+
+#echo 'A mano:'
+#echo ${results[0]}
+#echo ${results[1]}
+#echo ${results[2]}
+#echo ${results[3]}
+
+echo 'for con $@'
+for path in "${results[@]}"		#VIRGOLETTE FONDAMENTALI
+do
+	echo "oldpath=$path"
+	Filename="${path##*/}"
+	#Filename="${Filename%.*}"
+	#TO-DO: RIMUOVERE ESTENSIONE
+	echo "oldFilename="$Filename""
+	echo "oldBasename="$(basename "$path")""
+	#(uguali)
+
+	#echo "oldDirname="$(dirname "$path")""	#N.B. Senza virgolette intorno a path prende -v come argomento di dirname!!
+	#echo
+	newFilename="$(echo $Filename | tr "$setchar1" "$setchar2")"
+	newPath="${path/%$Filename/$newFilename}"
+	mv "$path" "$newPath"
+	echo "newpath=$newPath"
+	echo
+done
+

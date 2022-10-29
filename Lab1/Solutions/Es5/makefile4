@@ -1,0 +1,4 @@
+all: es5
+
+es5: 
+	gcc -o es5 es5.c -I.

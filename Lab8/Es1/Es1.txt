@@ -1,0 +1,11 @@
+1) vi Es1.bash (estensione non serve per linux, bastano primi bytes del file (shebang)
+2a) chmod +x Es1.bash (rendo eseguibile lo script) (Esecuzione diretta) userò ./Es1.bash args
+2b) eseguo dalla shell padre (Esecuzione indiretta) usando source ./Es1.bash args
+3) vi Es1.bash
+   #!bin/bash	(inserisco shebang)
+4) scrivo script
+5) con exit termino lo script
+N.B. Per debug -v verbose, -x traccia d'esecuzione:
+	Per singola istruzione: set +v(x) ... -v(x);
+	Per intero script: o /bin/bash -v(x) ./Es1.bash args nella shell
+			   o #!/bin/bash -v(x) nello script

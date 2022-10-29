@@ -1,0 +1,7 @@
+#!/bin/bash
+#Es. 1.2
+read uid gid other_groups <<< $(id)
+gid=${gid//[!0-9]/}
+find /home 2>/dev/null -name "*.c" -group "$gid" ! -user bexul
+#Es. 1.3
+find /home . 2>/dev/null -size +100M

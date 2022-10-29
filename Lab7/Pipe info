@@ -1,0 +1,33 @@
+(((Comportamento della pipe quando uno dei caratteri inseriti è \n:
+
+SENT STRING:		le1 ACAPO
+RECEIVED STRING:	le1 ACAPO
+file1
+file1
+
+in realtà mi aspetterei qualcosa tipo
+SENT STRING:		le1 ACAPO
+file1
+RECEIVED STRING:	le1 ACAPO
+file1
+
+ma evidentemente l'ACAPO rende la write non atomica: può crearsi interleaving con altri processi?)))
+
+N.B. Per passare l'input al programma eseguito in background si ridireziona l'input inserito da tastiera: ./Es1 < 3 8 &
+     Complessa la stampa in background! Processo riempie man mano la pipe di stdout, se la riempie completamente allora stampa anche se è in background!
+     Se invece non è completamente piena viene mandato il segnale per svuotarla su output solo in alcune circostanze:
+     \n nell'output
+     richiesta di accesso allo stdin (scanf)
+
+
+Inoltre, a seconda della size n che leggo:
+
+O_NONBLOCK disabled, n <= PIPE_BUF
+              All n bytes are written atomically; write(2) may block if
+              there is not room for n bytes to be written immediately
+
+O_NONBLOCK disabled, n > PIPE_BUF
+              The write is nonatomic: the data given to write(2) may be
+              interleaved with write(2)s by other process; the write(2)
+              blocks until n bytes have been written.
+

@@ -1,0 +1,26 @@
+Pipe | collega STDOUT del primo comando con stdin del secondo
+ex.stampa_stringa_su_stdout anatra | rendi_maiuscola_da_stdin
+shell:ANATRA
+
+Redirect > collega stdout del primo comando con il nomefile che gli fornisco (se esiste scrive nel file, se non esiste crea il file e ci scrive sopra
+ex. stampa_stringa_su_stdout(=echo) anatra > file_txt
+file_txt=anatra
+
+Redirect >&(0,1,2) collega stdout del primo comando con il file descriptor che gli fornisco (0,1,2 (stdin,out,err)) 
+ex. echo anatra >&0??? >&2?
+
+Redirect (0,1,2)>&(0,1,2) collega file descriptor (0,1,2) del primo comando con il file descriptor che gli fornisco (0,1,2 (stdin,out,err)) 
+ex. stampa_errore_su_stderr > file_txt 2>&1     Perchè prima collega stdout al file, e poi collega stderr a stdout (sul file!)
+file_txt=errore cercato
+
+N.B. NON: stampa_errore_su_stderr 2>&1 > file_txt   Questo invece prima collega stderr a stdout (sulla shell!) e poi collega SOLO STDOUT al file!
+shell: errore cercato
+file_txt: stdout del comando
+
+Si possono collegare i due operatori per fornire come stdin del secondo comando lo stderr del primo invece dello stdout
+ex.stampa_errore_su_stderr 2>&1 | rendi_maiuscola_da_stdin  Collega stderr del primo comando al suo stdout, e poi su questo stdout posso usare la pipe
+shell:ERRORE
+
+
+Append >> come redirect ma se file esiste attacca al fondo
+

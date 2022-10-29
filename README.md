@@ -1,0 +1,1 @@
+Exercises from Operating Systems I university course @ Politecnico di Torino. Oct 2018 - Feb 2019

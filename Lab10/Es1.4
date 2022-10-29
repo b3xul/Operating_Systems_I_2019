@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while IFS= read -r line 
+do
+    echo "$line"
+    stat "$line"     
+    chmod 664 "$line" -v
+    echo
+done < <(find "$1" -type f)
+

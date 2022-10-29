@@ -1,0 +1,2 @@
+Il makefile deve chiamarsi MAKEFILE!! ci sono altri modi per usarlo con nomi diversi da makefile! all: tutti i target che vorrò compilare, poi per ogni target comandi relativi.
+Prendeva il comando make solo perchè make nomefile con nomefile=nomefile.c da compilare!

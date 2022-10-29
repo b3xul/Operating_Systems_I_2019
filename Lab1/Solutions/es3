@@ -1,0 +1,3 @@
+cp my_exercise_1 my_copy_1 -r
+rm my_copy_1 -r
+unico modo per copiare/cancellare intere directory e sottodirectory senza dover copiare/cancellare file per file

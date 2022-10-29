@@ -1,0 +1,20 @@
+Esercizio 4 (signal handler):
+Scrivere un programma C che:
+Crea un figlio;
+Intercetta tramite handler apposito i segnali SIGUSR1, SIGUSR2; quando riceve il segnale x, visualizza
+“Ricevuto il segnale x”;
+Riceve in input su riga di comando una sequenza di interi x1,x2,...xk.
+In un ciclo infinito ad intervalli regolari, invia al processo figlio uno dei segnali ricevuti in input.
+Il processo figlio:
+Intercetta I segnali SIGUSR1, SIGUSR2 e SIGINT;
+Blocca tutti I segnali eccetto SIGUSR1, SIGUSR2 e SIGINT;
+Quando riceve SIGUSR1 invia al padre SIGUSR2;
+Quando riceve SIGUSR2 invia al padre SIGUSR1;
+Quando riceve SIGINT invia al padre SIGINT.
+Esercizio 5 (signal handler):
+Scrivere un programma C che:
+Riceve su riga di comando un intero n, crei n figli ed ad intervalli regolari di 2 secondi visualizzi il proprio PID
+e il PID del figlio i-esimo. Invii al figlio I-esimo un segnale.
+I processi figli:
+Quando ricevono il segnale inviato dal padre visualizzino il PID del padre, il proprio PID e l’intero associato
+al segnale.

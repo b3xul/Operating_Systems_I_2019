@@ -1,0 +1,4 @@
+#Compila HelloWorld
+HelloWorld:HelloWorld.c
+	gcc HelloWorld.c -o HelloWorld
+

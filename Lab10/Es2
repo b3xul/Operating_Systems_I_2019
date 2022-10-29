@@ -1,0 +1,8 @@
+#!/bin/bash
+#https://unix.stackexchange.com/questions/37313/how-do-i-grep-for-multiple-patterns-with-pattern-having-a-pipe-character
+ls -R -l ~ | grep "^-..x" | rev | cut -d ' ' -f 1 | rev > ~/lista.txt
+#-R=ricorsiva -l=info su permessi
+#ls -R -l -p ~ | grep -v /
+#-p inizia linee directory con /, grep -v / matcha tutte le linee che non contengano / (trova tutti i file regolari, ma in questo caso ci basta controllare che il primo carattere dei permessi sia - e non d)
+#rev|cut|rev inverte tutto, isola l'ultimo campo (filename) e poi lo inverte di nuovo, in questo modo da ls -l (tante info) estraggo solo il filename. N.B. Non funziona per nomifile separati da spazio (bestie di satana)
+cat ~/lista.txt | grep "o" | grep "s$" > ~/risultati.txt

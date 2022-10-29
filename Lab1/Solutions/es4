@@ -1,0 +1,4 @@
+chmod 000 my_copy_2
+chmod -rwxrwxrwx my_copy_2
+chmod u=,g=,o= my_copy_2
+E' possibile accedere solo tramite terminal SU (superuser)

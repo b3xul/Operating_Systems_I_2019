@@ -1,0 +1,24 @@
+cat nomefile: concatenate files (or stdin) and prints on stdout
+cat nomefile | sort: sort cat nomefile output
+cat < nomefile | sort: ridireziona il contenuto di nomefile a cat e invia lo stdout di cat a sort
+
+more nomefile: simple file viewer (1 page at a time->space to scroll)
+less nomefile: better file viewer (")
+
+df: report file system disk space usage
+
+touch nomefile: change file timestamps (if no file exists, one is created empty)
+
+ln -s ./old_dir linkdir: make links between files (or directories) (-s: symbolic) (linkdir not yet existing)
+hardlink?
+
+alias nomealias='value da sostituire(comando)': definisce (enumera='ls -l') o visualizza (nessun argomento) aliases (shortcut per comandi, comodo)
+
+sort nomefile: write sorted concatenation of file(s) to stdout
+sort < nomefile: ridireziona il contenuto di nomefile a sort
+
+ps: report snapshot of current processes of the current userID
+riporta PID,TTY(terminal associated with process), TIME (cumulated cpu time), CMD (executable name)
+ps -f: process hierarchy (forest)
+
+top: report processes in execution

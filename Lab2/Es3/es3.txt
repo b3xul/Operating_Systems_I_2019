@@ -1,0 +1,38 @@
+Lista di comandi a terminale:
+(ritornano tutti il risultato dell'ultimo comando eseguito tranne la &)
+
+&: esegue il comando prima della & in una subshell in modo asincrono in background (ritorna sempre 0(TRUE), non aspetta che termini)
+
+;: esegue i comandi uno dopo l'altro 
+
+&&: esegue il secondo comando solo se il primo ha ritornato 0
+
+||: esegue il secondo comando solo se il primo ha ritornato un valore diverso da 0 (falso)
+
+|: esegue il secondo comando usando come input l'output (standard) del primo
+
+|&: esegue il secondo comando usando anche lo standard error output del primo
+
+\: permette di andare a capo nel terminale senza che il \n venga interpretato come "esegui il comando appena scritto"
+
+#! : shebang: (=0x2321) posta a inizio file serve per comunicare alla shell madre che avrà a che fare con uno script, e quindi deve usare l'interprete associato per poterlo eseguire (a seconda del linguaggio in cui è scritto lo script userò, /bin/bash, /bin/sh (meno funzionalità di bash), /bin/php, ...)
+
+0. #! /bin/bash
+1. mkdir first ; mkdir second
+2. cp /etc/profile first
+3. cp /etc/profile second/copia-profile
+4. mv first/profile second ; mv second/copia-profile first
+5a.rm *profile	(solo se sono nella stessa cartella)
+5b.rm second/profile ; rm first/copia-profile NO
+5c.rm second/profile first/copia-profile SI'
+5d.find -type f -name '*profile' -delete (assicurandosi prima di stare eliminando solo i file desiderati)
+6a. rmdir first ; rmdir second NO
+6b.rmdir first second SI'
+(5+6. rm first second -R)
+7. touch -at 201810310000 es3.txt
+N.B. -t modifica timestamp di access time e modify time, ma non change time (ultimo tempo in cu è stato modificato l'inode associato al file (tempo attuale))
+-at modifica solo access time
+-mt modifica solo modify time
+formato data [[CC]YY]MMDDhhmm[ss]
+7. touch filevuoto
+
